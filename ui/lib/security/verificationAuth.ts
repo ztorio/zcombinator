@@ -8,14 +8,17 @@ import { createHash } from 'crypto';
 const PRIVY_APP_ID = process.env.NEXT_PUBLIC_PRIVY_APP_ID;
 const PRIVY_APP_SECRET = process.env.PRIVY_APP_SECRET;
 
-if (!PRIVY_APP_ID || !PRIVY_APP_SECRET) {
-  throw new Error(
-    'Missing required environment variables: NEXT_PUBLIC_PRIVY_APP_ID and PRIVY_APP_SECRET must be set'
-  );
-}
+// Initialize Privy client only if credentials are available
+// In mock mode, this will be null and functions will handle it gracefully
+let privyClient: PrivyClient | null = null;
 
-// Initialize Privy client
-const privyClient = new PrivyClient(PRIVY_APP_ID, PRIVY_APP_SECRET);
+if (PRIVY_APP_ID && PRIVY_APP_SECRET) {
+  try {
+    privyClient = new PrivyClient(PRIVY_APP_ID, PRIVY_APP_SECRET);
+  } catch (error) {
+    console.warn('Failed to initialize Privy client:', error);
+  }
+}
 
 // Rate limiting store (in production, use Redis)
 const rateLimitStore = new Map<string, { attempts: number; resetAt: number }>();
@@ -41,6 +44,10 @@ export interface VerificationAuditLog {
  * Verify Privy authentication token and extract user data
  */
 export async function verifyPrivyAuth(request: NextRequest) {
+  if (!privyClient) {
+    throw new Error('Privy client not initialized. NEXT_PUBLIC_PRIVY_APP_ID and PRIVY_APP_SECRET must be set');
+  }
+
   const authHeader = request.headers.get('authorization');
 
   if (!authHeader || !authHeader.startsWith('Bearer ')) {

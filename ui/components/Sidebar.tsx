@@ -290,7 +290,10 @@ export function Sidebar() {
       {/* Top Section */}
       <div className="flex flex-col gap-[36px]">
         {/* Logo */}
-        <div className="flex gap-[4px] h-[39px] items-center">
+        <button
+          onClick={() => router.push('/')}
+          className="flex gap-[4px] h-[39px] items-center cursor-pointer hover:opacity-80 transition-opacity"
+        >
           <div className="bg-[#030213] relative rounded-[8.75px] shrink-0 size-[28px] flex items-center justify-center">
             <Image
               src="/logos/z-logo-white.png"
@@ -305,7 +308,7 @@ export function Sidebar() {
               Combinator
             </p>
           </div>
-        </div>
+        </button>
 
         {/* Navigation */}
         <div className="flex flex-col gap-[7px]">

@@ -1,10 +1,10 @@
 'use client';
 
-import { TabBar } from './TabBar';
 import { usePathname } from 'next/navigation';
 import { useWallet } from './WalletProvider';
 import { usePrivy } from '@privy-io/react-auth';
 import { useTheme } from '@/contexts/ThemeContext';
+import Image from 'next/image';
 
 function ConnectWalletButton() {
   const { connecting, externalWallet } = useWallet();
@@ -56,6 +56,26 @@ function ConnectWalletButton() {
 function PageTitle() {
   const pathname = usePathname();
   const { theme } = useTheme();
+  
+  // Landing page - show "Combinator" with logo
+  if (pathname === '/') {
+    const logoColor = theme === 'dark' ? '#ffffff' : '#0a0a0a';
+    return (
+      <h1 className="text-7xl font-bold flex items-center gap-4" style={{ fontFamily: 'Inter, sans-serif', color: logoColor }}>
+        <Image
+          src="/logos/z-logo-white.png"
+          alt="Z"
+          width={56}
+          height={56}
+          className="mr-2"
+          style={{
+            filter: theme === 'dark' ? 'none' : 'brightness(0)',
+          }}
+        />
+        <span>Combinator</span>
+      </h1>
+    );
+  }
   
   // Check if it's a project detail page
   const isProjectDetailPage = pathname?.startsWith('/projects/') && pathname !== '/projects';
@@ -111,37 +131,22 @@ function PageTitle() {
 }
 
 export function Header() {
-  const pathname = usePathname();
   const { theme } = useTheme();
-  const isFaqPage = pathname === '/faq';
-  const isSwapPage = pathname === '/swap';
-  const isLaunchPage = pathname === '/launch';
-  const isProjectsPage = pathname === '/projects' || pathname?.startsWith('/projects/');
-  const isProposalsPage = pathname === '/decisions';
-  const isStakePage = pathname === '/stake';
-  const isPortfolioPage = pathname === '/portfolio';
-  const isLightPage = isFaqPage || isSwapPage || isLaunchPage || isProjectsPage || isProposalsPage || isStakePage || isPortfolioPage;
 
-  const headerBg = isLightPage 
-    ? (theme === 'dark' ? '#292929' : '#ffffff')
-    : '#181818';
+  const headerBg = theme === 'dark' ? '#292929' : '#ffffff';
 
   return (
     <header
       className="sticky top-0 z-10"
       style={{
         backgroundColor: headerBg,
-        borderBottom: isLightPage ? 'none' : '1px solid #2B2B2B',
+        borderBottom: 'none',
       }}
     >
-      {isLightPage ? (
-        <div className="flex items-center justify-between px-[40px] py-5">
-          <PageTitle />
-          <ConnectWalletButton />
-        </div>
-      ) : (
-        <TabBar />
-      )}
+      <div className="flex items-center justify-between px-[40px] py-5">
+        <PageTitle />
+        <ConnectWalletButton />
+      </div>
     </header>
   );
 }

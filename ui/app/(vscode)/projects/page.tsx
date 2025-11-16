@@ -4,7 +4,6 @@ import { ProjectCard } from '@/components/ProjectCard';
 import { FilterButton } from '@/components/FilterButton';
 import { useEffect, useState, useMemo, useRef, useCallback } from 'react';
 import { useWallet } from '@/components/WalletProvider';
-import { useTabContext } from '@/contexts/TabContext';
 import { useRouter, usePathname } from 'next/navigation';
 import { useTheme } from '@/contexts/ThemeContext';
 import { MOCK_PROPOSALS } from '@/lib/mock/mockProposals';
@@ -48,7 +47,6 @@ interface MarketData {
 
 export default function ProjectsPage() {
   const { wallet, externalWallet } = useWallet();
-  const { addTab } = useTabContext();
   const router = useRouter();
   const { theme } = useTheme();
   const pathname = usePathname();
@@ -230,7 +228,6 @@ export default function ProjectsPage() {
   }, [tokens, viewMode, marketData, fetchMarketDataBatch]);
 
   const handleRowClick = (token: TokenLaunch) => {
-    addTab('project', token.token_address, token.token_symbol || 'Unknown', pathname);
     router.push(`/projects/${token.token_address}`);
   };
 
