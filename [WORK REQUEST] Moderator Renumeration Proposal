@@ -1,0 +1,78 @@
+---
+name: Moderator Renumeration Proposal
+about: PR#48 adjustment
+title: 'Moderator Renumeration Proposal [WORK REQUEST] '
+labels: work-request
+---
+
+# Work Request
+
+Discord username: @Sadghost
+
+**Note**: Use this for work requiring team access (permissioned protocol access, migrations, fee changes, etc.). If you're submitting code yourself, use "Code Contribution" instead.
+
+## What Should Be Built?
+
+I am seeking to adjust the inflation of the daily emitted tokens based off PR #48 from ≈960k to ≈935k.. The extra 25k tokens daily should be given to Sadghost as renumeration for been the Discord and X community Moderator of the ZCombinator launchpad.
+
+
+
+## Why Does This Matter?
+
+The ZCombinator ecosystem/community benefit off the payment plan because;
+-A paid Moderator is motivated to be consistent.
+- Moderator is an actual Job role in Web3 and paying a Mod shows the professionalism and seriousness of both the core team and the community.
+-Encourages Fairness.
+
+The ZCombinator community will benefit from this Decision if it passes because the Moderator/Zod assists with;
+-Strong Community Management
+
+-Protects the Project’s Reputation
+Zods quickly handle FUD, spam, scams, and misinformation before they spread on both the Discord and X community page. This keeps the project’s public image clean.
+
+-Faster Support for Users
+Zods answer questions, guide newcomers, reducing pressure on the core team.
+
+-Creates a Safe Environment
+Zods enforce rules, remove harmful messages, and make sure everyone feels respected and secure.
+
+-Acts as a Bridge Between Team & Community
+
+-Improves User Retention & Growth
+A well-managed community is more attractive to new users and keeps existing members loyal.
+
+-Enables the Team to Focus on Building
+With the Moderator/Zod handling the front line, the core team can focus on product, partnerships, and strategy.
+
+
+**Who benefits:**
+
+Zcombinator Moderator
+
+**Expected outcome:**
+
+Adjust the inflation of the daily emitted tokens based off PR #48 from ≈960k to ≈935k.. The extra 25k tokens daily should be given to Sadghost
+
+## Supporting Evidence
+
+-Most successful Web3 projects (e.g., Layer 2s, launchpads, and major protocols) compensate moderators because community management directly affects user trust and platform adoption.
+
+-Active moderation has been shown to increase user retention and reduce churn, especially for new users joining during key announcements or market activity.
+
+-Unmoderated or under-moderated communities often experience higher rates of scams, FUD, and confusion, which harms credibility and slows growth.
+
+-My daily presence and response rate have already helped reduce spam, resolve user issues faster, and maintain consistent activity, demonstrating clear value to the ecosystem.
+
+
+---
+
+## Checklist
+
+- [x] Clear description of what to build
+- [x] Explained why this matters
+- [x] Provided supporting evidence
+- [x] Read [CONTRIBUTING.md](../../CONTRIBUTING.md)
+
+---
+
+**Note**: The ZC team currently reviews and prioritizes work requests. In the future, decision markets will determine which requests get built and rewards.
